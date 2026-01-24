@@ -7,6 +7,10 @@ class AgentLayer < Formula
 
   depends_on "go" => :build
 
+  on_macos do
+    depends_on arch: :arm64
+  end
+
   def install
     # Build the CLI binary as `al` (the formula name is `agent-layer`).
     system "go", "build", *std_go_args(output: bin/"al", ldflags: "-s -w"), "./cmd/al"
