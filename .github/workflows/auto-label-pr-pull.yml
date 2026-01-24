@@ -1,14 +1,14 @@
-name: Auto label pr-pull after tests
+name: Auto label pr-pull after brew test-bot
 
 on:
   workflow_run:
-    workflows: ["tests"]
+    workflows: ["brew test-bot"]
     types:
       - completed
 
 permissions:
   contents: read
-  pull-requests: write
+  issues: write
 
 jobs:
   label:
