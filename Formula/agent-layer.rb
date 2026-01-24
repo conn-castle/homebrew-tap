@@ -13,7 +13,12 @@ class AgentLayer < Formula
 
   def install
     # Build the CLI binary as `al` (the formula name is `agent-layer`).
-    system "go", "build", *std_go_args(output: bin/"al", ldflags: "-s -w"), "./cmd/al"
+    ldflags = %W[
+      -s -w
+      -X main.Version=v#{version}
+    ].join(" ")
+
+    system "go", "build", *std_go_args(output: bin/"al", ldflags: ldflags), "./cmd/al"
 
     # Install shell completions automatically (uses `al completion <shell>`).
     generate_completions_from_executable(
