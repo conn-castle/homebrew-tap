@@ -40,7 +40,7 @@ jobs:
             // SECURITY: Only auto-merge PRs opened by your GitHub App bot,
             // from a branch in THIS repo, matching your bump branch prefix.
             const login = pr.user?.login || "";
-            const isReleaseBot = /^conn-castle-release-bot(\\[bot\\])?$/.test(login);
+            const isReleaseBot = /^conn-castle-release-bot(\[bot\])?$/.test(login);
             const isSameRepo = pr.head?.repo?.full_name === `${context.repo.owner}/${context.repo.repo}`;
             const isBumpBranch = (pr.head?.ref || "").startsWith("bump-agent-layer-v");
 
