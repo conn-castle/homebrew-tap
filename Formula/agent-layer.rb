@@ -6,9 +6,9 @@ class AgentLayer < Formula
   license "MIT"
 
   bottle do
-    root_url "https://github.com/conn-castle/homebrew-tap/releases/download/agent-layer-0.8.0"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "12dcf972c1a9417f1b7fbd48dca881bcdb665e6ae2d75910ba9b92060cee472b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "cc6edbff5c0af2b1ecad09e8818ffd260681048fe4d33bb8229e70ec1bf101d8"
+    root_url "https://github.com/conn-castle/homebrew-tap/releases/download/agent-layer-0.8.1"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "9cb5593d7dff98fd407c934871bff66cf1cac7ae2112f331e99e263b1e028417"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "d1904cfdf4a9a11d957e390a3dc9f484964ceab64bc2fba24c43dce3759b1e2c"
   end
 
   depends_on "go" => :build
