@@ -1,8 +1,8 @@
 class AgentLayer < Formula
   desc "Unified instructions, tools, and MCP servers for various coding agents"
   homepage "https://github.com/conn-castle/agent-layer"
-  url "https://github.com/conn-castle/agent-layer/releases/download/v0.9.0/agent-layer-0.9.0.tar.gz"
-  sha256 "35903d42b253d27c837c4a7ca48fefb63ff841f940d09580dc1829558026f268"
+  url "https://github.com/conn-castle/agent-layer/releases/download/v0.9.1/agent-layer-0.9.1.tar.gz"
+  sha256 "83278b6ab72848293c71aae8a3ca2af653ae7172f55ee1c6535613176c34a33d"
   license "MIT"
 
   bottle do
