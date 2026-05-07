@@ -38,14 +38,21 @@ jobs:
             });
 
             // SECURITY: Only auto-merge PRs opened by your GitHub App bot,
-            // from a branch in THIS repo, matching your bump branch prefix.
+            // from a branch in THIS repo, matching one of the approved bump
+            // branch prefixes. Add a new entry here when onboarding a new
+            // formula whose release workflow opens bump-<formula>-v* PRs.
+            const APPROVED_BUMP_PREFIXES = [
+              "bump-agent-layer-v",
+              "bump-personal-context-v",
+            ];
             const login = pr.user?.login || "";
+            const headRef = pr.head?.ref || "";
             const isReleaseBot = /^conn-castle-release-bot(\[bot\])?$/.test(login);
             const isSameRepo = pr.head?.repo?.full_name === `${context.repo.owner}/${context.repo.repo}`;
-            const isBumpBranch = (pr.head?.ref || "").startsWith("bump-agent-layer-v");
+            const isBumpBranch = APPROVED_BUMP_PREFIXES.some(p => headRef.startsWith(p));
 
             if (!isReleaseBot || !isSameRepo || !isBumpBranch) {
-              core.info(`Not labeling PR #${prNumber}: login=${login}, sameRepo=${isSameRepo}, headRef=${pr.head?.ref}`);
+              core.info(`Not labeling PR #${prNumber}: login=${login}, sameRepo=${isSameRepo}, headRef=${headRef}`);
               return;
             }
 
