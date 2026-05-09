@@ -1,8 +1,8 @@
 class PersonalContext < Formula
   desc "Personal structured vault for searchable knowledge, data, files, and slides"
   homepage "https://github.com/conn-castle/personal-context"
-  url "https://github.com/conn-castle/personal-context/releases/download/v0.1.0/personal-context-0.1.0.tar.gz"
-  sha256 "b6aceca47ac09eaa0399633678a5d61a09e00bc29866387cb5bc86911b16b487"
+  url "https://github.com/conn-castle/personal-context/releases/download/v0.1.1/personal-context-0.1.1.tar.gz"
+  sha256 "170b8d7becf84655178938dcdda2774d65b96573c8abadb643af496e1e106f47"
   license "PolyForm-Noncommercial-1.0.0"
 
   bottle do
