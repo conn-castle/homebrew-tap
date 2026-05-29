@@ -6,9 +6,9 @@ class PersonalContext < Formula
   license "PolyForm-Noncommercial-1.0.0"
 
   bottle do
-    root_url "https://github.com/conn-castle/homebrew-tap/releases/download/personal-context-0.1.2"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "eb1557c12a268f0ae0e3e481aa040d9d2a67daa34129fe27604593da0eb3d032"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "1c5c68061c2401200a4420eafe2d62aa792d0597ce1652970e7428b1549d31db"
+    root_url "https://github.com/conn-castle/homebrew-tap/releases/download/personal-context-0.1.3"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "f4c1baed0c53376d47eba8a800e43838972c080ac4761ce008cd8055d128c97a"
+    sha256 cellar: :any,                 x86_64_linux: "e1128411b7ced576accb108f3ac49cd3b292a8f8841493be4bbed06f6ec41868"
   end
 
   depends_on "go" => :build
