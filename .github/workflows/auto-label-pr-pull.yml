@@ -42,6 +42,7 @@ jobs:
             // branch prefixes. Add a new entry here when onboarding a new
             // formula whose release workflow opens bump-<formula>-v* PRs.
             const APPROVED_BUMP_PREFIXES = [
+              "bump-agent-panel-v",
               "bump-agent-layer-v",
               "bump-personal-context-v",
             ];
