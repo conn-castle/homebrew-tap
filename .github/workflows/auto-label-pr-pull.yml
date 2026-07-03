@@ -41,9 +41,10 @@ jobs:
             // from a branch in THIS repo, matching one of the approved bump
             // branch prefixes. Add a new entry here when onboarding a new
             // formula whose release workflow opens bump-<formula>-v* PRs.
+            // Binary formulae that point at prebuilt release assets do not
+            // produce bottle artifacts, so do not include them here.
             const APPROVED_BUMP_PREFIXES = [
               "bump-agent-panel-v",
-              "bump-agent-layer-v",
               "bump-personal-context-v",
             ];
             const login = pr.user?.login || "";
