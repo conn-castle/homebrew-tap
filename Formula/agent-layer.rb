@@ -5,11 +5,14 @@ class AgentLayer < Formula
   license "MIT"
 
   on_macos do
-    depends_on arch: :arm64
-
     on_arm do
       url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.0/al-darwin-arm64", using: :nounzip
       sha256 "c94a812a42d02e7c954b0e2e8391e40af59996d2489675a312503d53a1b8121f"
+    end
+
+    on_intel do
+      url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.0/al-darwin-amd64", using: :nounzip
+      sha256 "3755ef77f94b2ae8e6ccc41f7d3d42fb4f8fcb5698857b278cd33194f70c653f"
     end
   end
 
