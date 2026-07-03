@@ -1,41 +1,39 @@
 class AgentLayer < Formula
-  desc "Unified instructions, tools, and MCP servers for various coding agents"
+  desc "Config-first CLI for keeping coding agents in sync"
   homepage "https://github.com/conn-castle/agent-layer"
-  url "https://github.com/conn-castle/agent-layer/releases/download/v0.11.0/agent-layer-0.11.0.tar.gz"
-  sha256 "b315d71e088f1eb1a1121c106951ef86f860589096957f52d8ebc13a3881b09f"
+  version "0.12.0"
   license "MIT"
 
-  bottle do
-    root_url "https://github.com/conn-castle/homebrew-tap/releases/download/agent-layer-0.11.0"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "f5fbb9b510fe6ef4c92d7b68107895bb041355d387269c251ad04646a8ddf5d5"
-    sha256 cellar: :any,                 x86_64_linux: "5db2d17f47018bf2c4802e458e4fd1177a1c9c20941edefcff0706b9cd0c9d07"
+  on_macos do
+    on_arm do
+      url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.0/al-darwin-arm64", using: :nounzip
+      sha256 "c94a812a42d02e7c954b0e2e8391e40af59996d2489675a312503d53a1b8121f"
+    end
+
+    on_intel do
+      url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.0/al-darwin-amd64", using: :nounzip
+      sha256 "3755ef77f94b2ae8e6ccc41f7d3d42fb4f8fcb5698857b278cd33194f70c653f"
+    end
   end
 
-  depends_on "go" => :build
+  on_linux do
+    on_arm do
+      url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.0/al-linux-arm64", using: :nounzip
+      sha256 "158a18fb4f1854f06a29fdeffc93b8d6817423fccac88378fd773c4fda4f6d8d"
+    end
 
-  on_macos do
-    depends_on arch: :arm64
+    on_intel do
+      url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.0/al-linux-amd64", using: :nounzip
+      sha256 "e0711eaa5fe48121c11ae3bade1be70532ba2eba80523b5a51cfa3ac3a728675"
+    end
   end
 
   def install
-    # Build the CLI binary as `al` (the formula name is `agent-layer`).
-    ldflags = %W[
-      -s -w
-      -X main.Version=v#{version}
-    ].join(" ")
-
-    system "go", "build", *std_go_args(output: bin/"al", ldflags: ldflags), "./cmd/al"
-
-    # Install shell completions automatically (uses `al completion <shell>`).
-    generate_completions_from_executable(
-      bin/"al",
-      shell_parameter_format: :cobra,
-      shells:                 [:bash, :zsh, :fish],
-    )
+    bin.install Dir["al-*"].first => "al"
+    generate_completions_from_executable(bin/"al", "completion")
   end
 
   test do
-    assert_match "Agent Layer", shell_output("#{bin}/al --help")
-    assert_match "bash completion", shell_output("#{bin}/al completion bash")
+    assert_match version.to_s, shell_output("#{bin}/al --version")
   end
 end
