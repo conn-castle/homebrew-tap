@@ -1,30 +1,30 @@
 class AgentLayer < Formula
   desc "Config-first CLI for keeping coding agents in sync"
   homepage "https://github.com/conn-castle/agent-layer"
-  version "0.12.2"
+  version "0.12.3"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.2/al-darwin-arm64", using: :nounzip
-      sha256 "e69a5ee80c5fb48cc680a32d666ffb0f6054f02f04e20b7a0c500701a408f58a"
+      url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.3/al-darwin-arm64", using: :nounzip
+      sha256 "84c58aa8513ae3e74786cb944fe0429a6260256376c0e3d86f140ce23c732553"
     end
 
     on_intel do
-      url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.2/al-darwin-amd64", using: :nounzip
-      sha256 "e5cd7273341271cdb91c56518482587af3c9c9fc3eef953020bc32e15e54f8cd"
+      url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.3/al-darwin-amd64", using: :nounzip
+      sha256 "cc13dd53f3da3710851e01f265aec3bd52722b2bfebe83455e5f3073d4ac89ca"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.2/al-linux-arm64", using: :nounzip
-      sha256 "80b1fbadc2d789c3a09b59cd1cc887d394b2e230e6d71cf20455baf71498be9d"
+      url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.3/al-linux-arm64", using: :nounzip
+      sha256 "ec4baeeaa0b5107077423b9e3be7ed15186cc2e842631f75a8abf868f6706f2f"
     end
 
     on_intel do
-      url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.2/al-linux-amd64", using: :nounzip
-      sha256 "281baeda81d45bf822441c9c922b2e3a27ce8867b7d21edb3f0d419f94af88a9"
+      url "https://github.com/conn-castle/agent-layer/releases/download/v0.12.3/al-linux-amd64", using: :nounzip
+      sha256 "e578a07c5e5d985b982c85b7f4bbd3c5e264a02dbff2320edb1a4989734d2821"
     end
   end
 
