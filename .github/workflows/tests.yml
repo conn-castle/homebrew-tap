@@ -40,8 +40,16 @@ jobs:
       - run: brew test-bot --only-setup
 
       - run: brew test-bot --only-tap-syntax
-      - run: brew test-bot --only-formulae
+      - name: Run formula tests with one clean retry
         if: github.event_name == 'pull_request'
+        run: |
+          if brew test-bot --only-formulae; then
+            exit 0
+          fi
+
+          echo "::warning::Formula tests failed; cleaning Homebrew state and retrying once."
+          brew test-bot --only-cleanup-before
+          brew test-bot --only-formulae
 
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
