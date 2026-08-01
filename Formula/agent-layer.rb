@@ -1,7 +1,6 @@
 class AgentLayer < Formula
   desc "Config-first CLI for keeping coding agents in sync"
   homepage "https://github.com/conn-castle/agent-layer"
-  version "0.15.0"
   license "MIT"
 
   on_macos do
