@@ -5,25 +5,25 @@ class AgentLayer < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/conn-castle/agent-layer/releases/download/v0.17.1/al-darwin-arm64", using: :nounzip
-      sha256 "87e25ac585e346b58d2489054ad57995b5d3237edb7d3ff1e52c3159774c5ab5"
+      url "https://github.com/conn-castle/agent-layer/releases/download/v0.17.2/al-darwin-arm64", using: :nounzip
+      sha256 "ab8cfebb3d05062f2c6b822b017c6bb4a7b4f18bd930c9a415a7abf5c00b582e"
     end
 
     on_intel do
-      url "https://github.com/conn-castle/agent-layer/releases/download/v0.17.1/al-darwin-amd64", using: :nounzip
-      sha256 "25104df383fdc77b13373f2769519440b7da1fead97eb3317ca6bbca50a67c31"
+      url "https://github.com/conn-castle/agent-layer/releases/download/v0.17.2/al-darwin-amd64", using: :nounzip
+      sha256 "8baad994a4c973d7ec17044a5e09eed1ef85471d00e781cea19a8138890ca42a"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/conn-castle/agent-layer/releases/download/v0.17.1/al-linux-arm64", using: :nounzip
-      sha256 "3c841384599917276ec2e93e038893479cbe5dfee149a2a018168d60a3477698"
+      url "https://github.com/conn-castle/agent-layer/releases/download/v0.17.2/al-linux-arm64", using: :nounzip
+      sha256 "312df04a56369c938a8b6b67295bd9f6eb816c444068515f448eccce6942809c"
     end
 
     on_intel do
-      url "https://github.com/conn-castle/agent-layer/releases/download/v0.17.1/al-linux-amd64", using: :nounzip
-      sha256 "6909e4f94675de747dad20fee21634f1649ae49f07fd89d4f250871f0d5935bb"
+      url "https://github.com/conn-castle/agent-layer/releases/download/v0.17.2/al-linux-amd64", using: :nounzip
+      sha256 "ac817de6071dd7166aa56f51d2d005438a0366424eccfbe87d10931a60e4e4e2"
     end
   end
 
