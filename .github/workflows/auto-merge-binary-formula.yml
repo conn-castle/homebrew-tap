@@ -32,9 +32,10 @@ jobs:
               return;
             }
 
-            const BINARY_FORMULAE = [
-              "agent-layer",
-            ];
+            const BINARY_PACKAGES = new Map([
+              ["agent-layer", "Formula/agent-layer.rb"],
+              ["agent-outbox", "Casks/agent-outbox.rb"],
+            ]);
 
             const prNumber = prs[0].number;
             const { owner, repo } = context.repo;
@@ -48,11 +49,11 @@ jobs:
             const headRef = pr.head?.ref || "";
             const headSha = pr.head?.sha || "";
             const labels = (pr.labels || []).map(label => label.name);
-            const formula = BINARY_FORMULAE.find(name => headRef.startsWith(`bump-${name}-v`));
+            const packageName = [...BINARY_PACKAGES.keys()].find(name => headRef.startsWith(`bump-${name}-v`));
             const isReleaseBot = /^conn-castle-release-bot(\[bot\])?$/.test(login);
             const isSameRepo = pr.head?.repo?.full_name === `${owner}/${repo}`;
 
-            if (!formula || !isReleaseBot || !isSameRepo) {
+            if (!packageName || !isReleaseBot || !isSameRepo) {
               core.info(`Not merging PR #${prNumber}: login=${login}, sameRepo=${isSameRepo}, headRef=${headRef}`);
               return;
             }
@@ -80,7 +81,7 @@ jobs:
               per_page: 100,
             });
             const changedFiles = files.map(file => file.filename).sort();
-            const expectedFile = `Formula/${formula}.rb`;
+            const expectedFile = BINARY_PACKAGES.get(packageName);
             const unexpectedFiles = changedFiles.filter(file => file !== expectedFile);
             if (changedFiles.length !== 1 || unexpectedFiles.length > 0) {
               core.setFailed(`Refusing to merge PR #${prNumber}: expected only ${expectedFile}, got ${changedFiles.join(", ") || "(no files)"}.`);
